@@ -108,11 +108,17 @@ public class GameConfigurationHandler {
     }
 
     private void timeoutChecker() {
-        while(!timeoutThread.isInterrupted()) {
+        while(!Thread.interrupted()) {
             try {
-                Thread.sleep(50);
                 if((System.currentTimeMillis() - lastStepTime) >= 60000) discard(1);
             } catch (InterruptedException e) {
+                try {
+                    discard(2);
+                } catch (InterruptedException ex) {
+                    Objects.requireNonNull(PTHCBot.jda.getTextChannelById(channelId)).sendMessage("oh god everything's on fire").queue();
+                    ex.printStackTrace();
+                    System.exit(1);
+                }
                 e.printStackTrace();
             }
         }
@@ -124,6 +130,7 @@ public class GameConfigurationHandler {
 
     public void discard(int reason) throws InterruptedException {
         if(reason == 1) Objects.requireNonNull(PTHCBot.jda.getTextChannelById(channelId)).sendMessage("Your setup has been canceled because you took too long to respond").queue();
+        else if(reason == 2) Objects.requireNonNull(PTHCBot.jda.getTextChannelById(channelId)).sendMessage("Something went wrong").queue();
         stage = -1;
         timeoutThread.interrupt();
         timeoutThread.join();

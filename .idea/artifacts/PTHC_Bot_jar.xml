@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="PTHC_Bot:jar">
+  <artifact type="jar" build-on-make="true" name="PTHC_Bot:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/PTHC_Bot_jar</output-path>
     <root id="archive" name="PTHC_Bot.jar">
       <element id="module-output" name="PTHC_Bot" />
