@@ -32,6 +32,7 @@ public class PTHCBot {
     public static Communicator communicator;
     public static boolean serverRunning = false;
     public static ServerManager serverManager;
+    public static Properties config;
 
     public static Process oldProcess;
 
@@ -41,7 +42,7 @@ public class PTHCBot {
 
             if(conFile.createNewFile())
                 throw new IllegalArgumentException("No configuration provided");
-            Properties config = new Properties();
+            config = new Properties();
             config.load(new FileInputStream(conFile));
             String token = config.getProperty("token");
             pthcCount = Integer.parseInt(config.getProperty("count"));

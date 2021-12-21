@@ -9,7 +9,7 @@ import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.interactions.components.ActionRow;
 import net.dv8tion.jda.api.interactions.components.Button;
 
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -61,9 +61,8 @@ public class CommunicationHandler {
         PTHCBot.serverManager.end(false);
         PTHCBot.pthcCount++;
         try {
-            FileWriter writer = new FileWriter("./count.txt");
-            writer.write(Integer.toString(PTHCBot.pthcCount));
-            writer.close();
+            PTHCBot.config.setProperty("count", Integer.toString(PTHCBot.pthcCount));
+            PTHCBot.config.store(new FileOutputStream("config.properties"), "");
         } catch (IOException e) {
             System.out.println("Couldn't save PTHC count!");
             e.printStackTrace();
