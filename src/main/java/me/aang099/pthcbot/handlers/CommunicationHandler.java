@@ -47,14 +47,14 @@ public class CommunicationHandler {
                     .setColor(0xc70c0c)
                     .setTitle("PTHC Ended")
                     .setDescription("PTHC " + PTHCBot.pthcCount + " has ended.")
-                    .setFooter("If you have any issues or would like to dispute these results please contact JayNeedsHelp#5909 or TheCocowoGamer#6318")
+                    .setFooter("If you have any issues or would like to dispute these results please contact Aang#4343 or TheCocowoGamer#6318")
                     .build();
         } else {
             embed = new EmbedBuilder()
                     .setColor(0xc70c0c)
                     .setTitle("PTHC Ended")
                     .setDescription("PTHC " + PTHCBot.pthcCount + " has ended. <@" + discordId + "> won.")
-                    .setFooter("If you have any issues or would like to dispute these results please contact JayNeedsHelp#5909 or TheCocowoGamer#6318")
+                    .setFooter("If you have any issues or would like to dispute these results please contact Aang#4343 or TheCocowoGamer#6318")
                     .build();
         }
         Objects.requireNonNull(PTHCBot.jda.getTextChannelById(PTHCBot.pthcAnnouncementsChannel)).sendMessageEmbeds(embed).queue();

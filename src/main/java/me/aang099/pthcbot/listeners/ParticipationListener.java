@@ -69,7 +69,7 @@ public class ParticipationListener extends ListenerAdapter {
                 .setColor(0x12db41)
                 .setTitle("New PTHC")
                 .setDescription("PTHC " + PTHCBot.pthcCount + " is starting, if you would like to join connect to PracticeTHC.epicgamer.org with port " + 7777 + ".")
-                .setFooter("If you have any issues contact JayNeedsHelp#5909 or TheCocowoGamer#6318")
+                .setFooter("If you have any issues contact Aang#4343 or TheCocowoGamer#6318")
                 .build();
 
         MessageChannel announcementChannel = PTHCBot.jda.getTextChannelById(PTHCBot.pthcAnnouncementsChannel);
