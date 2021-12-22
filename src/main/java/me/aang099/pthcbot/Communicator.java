@@ -1,6 +1,5 @@
 package me.aang099.pthcbot;
 
-import me.aang099.pthcbot.PTHCBot;
 import me.aang099.pthcbot.handlers.CommunicationHandler;
 
 import java.io.*;
@@ -38,11 +37,10 @@ public class Communicator extends Thread {
                 Socket socket = serverSocket.accept();
 
                 System.out.println("Client connected!");
-
                 BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 writer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), StandardCharsets.UTF_8)));
 
-                sendGraceTime(PTHCBot.serverManager.getConfiguration().graceTime());
+                sendGraceTime(PTHCBot.serverManager == null ? 24 : PTHCBot.serverManager.getConfiguration().graceTime());
 
                 String line;
 
