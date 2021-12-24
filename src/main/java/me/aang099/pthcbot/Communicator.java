@@ -74,8 +74,8 @@ public class Communicator extends Thread {
         String[] args = Arrays.copyOfRange(unParsedArray, 1, unParsedArray.length);
 
         switch(type) {
-            case REQUESTUSERAPPROVAL -> CommunicationHandler.handleRequestUserApproval(args[0], Integer.parseInt(args[1]));
-            case ANNOUNCEWINNER ->   CommunicationHandler.handleAnnounceWinner(args[0]);
+            case RequestUserApproval -> CommunicationHandler.handleRequestUserApproval(args[0], Integer.parseInt(args[1]));
+            case AnnounceWinner ->   CommunicationHandler.handleAnnounceWinner(args[0]);
         }
     }
 
@@ -84,7 +84,7 @@ public class Communicator extends Thread {
      * @param minutes The grace length in minutes
      */
     public static void sendGraceTime(int minutes) {
-        sendMessage(OutMessageTypes.SETGRACETIME, Integer.toString(minutes));
+        sendMessage(OutMessageTypes.SetGraceTime, Integer.toString(minutes));
     }
 
     /**
@@ -93,7 +93,7 @@ public class Communicator extends Thread {
      * @param playerIndex The player index so that the server can match the response to the appropriate player
      */
     public static void sendUserApprovalResponse(String discordId, int playerIndex) {
-        sendMessage(OutMessageTypes.USERAPPROVALRESPONSE, discordId, Integer.toString(playerIndex));
+        sendMessage(OutMessageTypes.UserApprovalResponse, discordId, Integer.toString(playerIndex));
     }
 
     /**
@@ -115,13 +115,13 @@ public class Communicator extends Thread {
 
     /** The incoming message types */
     public enum InMessageTypes {
-        REQUESTUSERAPPROVAL,
-        ANNOUNCEWINNER
+        RequestUserApproval,
+        AnnounceWinner
     }
 
     /** The outgoing message types */
     public enum OutMessageTypes {
-        SETGRACETIME,
-        USERAPPROVALRESPONSE
+        SetGraceTime,
+        UserApprovalResponse
     }
 }
